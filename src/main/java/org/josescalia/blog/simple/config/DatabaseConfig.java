@@ -25,7 +25,7 @@ public class DatabaseConfig {
     //@Value("${spring.datasource.driver}")
     //private String databaseDriver;
 
-    /*@Value("${spring.datasource.url}")
+    @Value("${spring.datasource.url}")
     private String databaseUrl;
 
     @Value("${spring.datasource.username}")
@@ -40,7 +40,6 @@ public class DatabaseConfig {
 
     @Value("${spring.datasource.dialect}")
     private String hibernateDialect;
-*/
 
     @Scope(value = "singleton")
     public DataSource getDataSource() {
@@ -76,7 +75,7 @@ public class DatabaseConfig {
     final Properties additionalProperties() {
         logger.info("additional properties invoked");
         final Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", hbm2Ddl);
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         return hibernateProperties;
     }
